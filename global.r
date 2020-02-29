@@ -1,5 +1,6 @@
 library(shiny)
 library(dplyr)
+library(shinyjs)
 
 doorUI <- function(id, label) {
   ns <- NS(id)
@@ -24,6 +25,37 @@ door <- function(input, output, session) {
   
   observeEvent(input$choice_2, {
     choice(2)
+  })
+  
+  output$button <- renderPrint({
+    choice()
+  })
+}
+
+doorUI2 <- function(id) {
+  ns <- NS(id)
+  list(
+    actionButton(ns("choice_1"), "Choice 1"),
+    br(), br(),
+    disabled(actionButton(ns("choice_2"), "Choice 2")),
+    br(), br(),
+    verbatimTextOutput(ns("button"))    
+  )
+}
+
+door2 <- function(input, output, session) {
+  
+  choice <- reactiveVal()
+  
+  observeEvent(input$choice_1, {
+    choice(1)
+    disable("choice_1")
+    enable("choice_2")
+  })
+  
+  observeEvent(input$choice_2, {
+    choice(2)
+    disable("choice_2")
   })
   
   output$button <- renderPrint({

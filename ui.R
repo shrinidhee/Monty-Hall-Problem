@@ -1,5 +1,6 @@
 shinyUI(
   fluidPage(
-    doorUI("door_1", "Door 1")
+    useShinyjs(),
+    doorUI2("door_1")
   )
 )

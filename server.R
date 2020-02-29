@@ -1,5 +1,5 @@
 shinyServer(function(input, output, session) {
   
-  callModule(door, "door_1")
+  callModule(door2, "door_1")
   
 })
