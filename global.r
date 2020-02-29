@@ -32,6 +32,7 @@ door <- function(input, output, session, choice, door_id, door_choice, new_game,
   observeEvent(new_game(), {
     enable("choice_1")
     disable("choice_2")
+    choice(0)
     door_choice$first <- NULL
     door_choice$second <- NULL
     prize_door(sample(3, 1))
