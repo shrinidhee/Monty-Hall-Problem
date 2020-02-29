@@ -11,7 +11,7 @@ doorUI <- function(id) {
   )
 }
 
-door <- function(input, output, session, choice, door_id, door_choice) {
+door <- function(input, output, session, choice, door_id, door_choice, new_game, prize_door) {
   
   observeEvent(input$choice_1, {
     choice(1)
@@ -27,5 +27,13 @@ door <- function(input, output, session, choice, door_id, door_choice) {
     if(choice() == 1) disable("choice_1")
     if(choice() == 1) enable("choice_2")
     if(choice() == 2) disable("choice_2")
+  })
+  
+  observeEvent(new_game(), {
+    enable("choice_1")
+    disable("choice_2")
+    door_choice$first <- NULL
+    door_choice$second <- NULL
+    prize_door(sample(3, 1))
   })
 }
