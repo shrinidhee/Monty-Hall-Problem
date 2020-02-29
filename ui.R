@@ -1,9 +1,9 @@
 shinyUI(
   fluidPage(
     useShinyjs(),
-    doorUI2("door_1"),
+    doorUI("door_1"),
     br(),br(),
-    doorUI2("door_2"),
+    doorUI("door_2"),
     br(),br(),
     verbatimTextOutput("test")
   )
