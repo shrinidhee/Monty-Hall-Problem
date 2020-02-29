@@ -11,14 +11,16 @@ doorUI <- function(id) {
   )
 }
 
-door <- function(input, output, session, choice) {
+door <- function(input, output, session, choice, door_id, door_choice) {
   
   observeEvent(input$choice_1, {
     choice(1)
+    door_choice$first <- door_id
   })
   
   observeEvent(input$choice_2, {
     choice(2)
+    door_choice$second <- door_id
   })
   
   observe({
