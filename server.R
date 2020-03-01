@@ -31,6 +31,11 @@ shinyServer(function(input, output, session) {
     }
   })
   
+  observeEvent(input$reset_score, {
+    score$won <- 0
+    score$lost <- 0
+  })
+  
   output$test <- renderPrint({
     c("first" = door_choice$first, "Sec" = door_choice$second, "pd" = prize_door(),
       "ndoors" = as.numeric(input$ndoors))
