@@ -23,12 +23,22 @@ shinyServer(function(input, output, session) {
              door_choice = door_choice, new_game = reactive(input$new_game),
              prize_door = prize_door, open_door = open_door)
   
+  observeEvent(door_choice$second, {
+    if(door_choice$second == prize_door()) {
+      score$won <- score$won + 1
+    } else {
+      score$lost <- score$lost + 1
+    }
+  })
+  
   output$test <- renderPrint({
     c("first" = door_choice$first, "Sec" = door_choice$second, "pd" = prize_door(),
       "ndoors" = as.numeric(input$ndoors))
   })
   
-  output$test2 <- renderPrint(open_door())
+  output$test2 <- renderPrint({
+    c("won" = score$won, "lost" = score$lost)
+  })
   
   output$never_switch <- renderValueBox({
     valueBox("33%", "Expected Win %: Never Switch Strategy", color = "red")
@@ -39,7 +49,9 @@ shinyServer(function(input, output, session) {
   })
   
   output$actual_score <- renderValueBox({
-    valueBox("33%", "Player Win %", color = "blue")
+    req((score$won + score$lost) > 0)
+    current_score <- round(score$won * 100 / (score$won + score$lost), 1)
+    valueBox(paste0(current_score, "%"), "Player Win %", color = "blue")
   })
   
 })
