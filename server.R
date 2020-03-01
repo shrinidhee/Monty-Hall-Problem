@@ -1,30 +1,34 @@
 shinyServer(function(input, output, session) {
   
   prize_door <- reactiveVal(sample(3, 1))
-  choice <- reactiveVal(0)
+  choice_number <- reactiveVal(0)
   door_choice <- reactiveValues(first = NULL, second = NULL)
   score <- reactiveValues(won = 0, lost = 0)
   
-  # output$doors <- renderUI({
-  #   lapply(seq_len(as.numeric(input$ndoors)), function(x) {
-  #     doorUI(paste0("door_", x))
-  #   })
-  # })
+  open_door <- reactive({
+    req(door_choice$first)
+    setdiff(1:3, c(prize_door(), door_choice$first)) %>% 
+      as.character() %>% 
+      sample(1) %>% 
+      as.numeric()
+  })
   
-  callModule(door, "door_1", choice = choice, door_id = 1, 
+  callModule(door, "door_1", choice_number = choice_number, door_id = 1, 
              door_choice = door_choice, new_game = reactive(input$new_game),
-             prize_door = prize_door)
-  callModule(door, "door_2", choice = choice, door_id = 2, 
+             prize_door = prize_door, open_door = open_door)
+  callModule(door, "door_2", choice_number = choice_number, door_id = 2, 
              door_choice = door_choice, new_game = reactive(input$new_game),
-             prize_door = prize_door)
-  callModule(door, "door_3", choice = choice, door_id = 3, 
+             prize_door = prize_door, open_door = open_door)
+  callModule(door, "door_3", choice_number = choice_number, door_id = 3, 
              door_choice = door_choice, new_game = reactive(input$new_game),
-             prize_door = prize_door)
+             prize_door = prize_door, open_door = open_door)
   
   output$test <- renderPrint({
     c("first" = door_choice$first, "Sec" = door_choice$second, "pd" = prize_door(),
       "ndoors" = as.numeric(input$ndoors))
   })
+  
+  output$test2 <- renderPrint(open_door())
   
   output$never_switch <- renderValueBox({
     valueBox("33%", "Expected Win %: Never Switch Strategy", color = "red")

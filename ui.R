@@ -23,6 +23,7 @@ dashboardPage(
     box(doorUI("door_2"), width = 4),
     box(doorUI("door_3"), width = 4),
     br(),
-    verbatimTextOutput("test")
+    verbatimTextOutput("test"),
+    verbatimTextOutput("test2")
   )
 )
