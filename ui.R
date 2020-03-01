@@ -15,15 +15,11 @@ dashboardPage(
       valueBoxOutput("always_switch", width = 2),
       valueBoxOutput("actual_score", width = 2)
     ),
-    hr(),
     actionButton("reset_score", "Reset Score"),
     actionButton("new_game", "New Game"),
     br(), br(),
-    box(doorUI("door_1"), width = 4),
-    box(doorUI("door_2"), width = 4),
-    box(doorUI("door_3"), width = 4),
-    br(),
-    verbatimTextOutput("test"),
-    verbatimTextOutput("test2")
+    box(doorUI("door_1"), width = 2, title = "Door 1"),
+    box(doorUI("door_2"), width = 2, title = "Door 2"),
+    box(doorUI("door_3"), width = 2, title = "Door 3")
   )
 )

@@ -38,6 +38,7 @@ door <- function(input, output, session, choice_number, door_id,
     if(choice_number() == 1) disable("choice_1")
     if(choice_number() == 1) enable("choice_2")
     if(door_id %in% open_door()) {
+      disable("choice_2")
       hide("img_door")
       show("img_donkey")
     }
