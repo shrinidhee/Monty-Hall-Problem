@@ -31,6 +31,12 @@ shinyServer(function(input, output, session) {
     }
   })
   
+  observeEvent(input$new_game, {
+    door_choice$first <- NULL
+    door_choice$second <- NULL
+    prize_door(sample(3, 1))
+  })
+  
   observeEvent(input$reset_score, {
     score$won <- 0
     score$lost <- 0

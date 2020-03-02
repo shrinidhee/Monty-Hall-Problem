@@ -58,9 +58,6 @@ door <- function(input, output, session, choice_number, door_id,
     enable("choice_1")
     disable("choice_2")
     choice_number(0)
-    door_choice$first <- NULL
-    door_choice$second <- NULL
-    prize_door(sample(3, 1))
     hide("img_donkey")
     hide("img_prize")
     show("img_door")

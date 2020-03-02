@@ -4,22 +4,32 @@ dashboardPage(
   dashboardBody(
     useShinyjs(),
     fluidRow(
-      box("some text", title = "Game Desc", width = 4, height = "100px"),
-      box(
-        radioGroupButtons("ndoors", label= NULL, choiceNames = c("3 Doors", "10 Doors"),
-                          choiceValues = c(3, 10)),
-        title = "Select number of doors",
-        width = 2, align = "center", height = "100px"
+      column(3,
+        box("some text", title = "Game Desc")
       ),
-      valueBoxOutput("never_switch", width = 2),
-      valueBoxOutput("always_switch", width = 2),
-      valueBoxOutput("actual_score", width = 2)
-    ),
-    actionButton("reset_score", "Reset Score"),
-    actionButton("new_game", "New Game"),
-    br(), br(),
-    box(doorUI("door_1"), width = 2, title = "Door 1"),
-    box(doorUI("door_2"), width = 2, title = "Door 2"),
-    box(doorUI("door_3"), width = 2, title = "Door 3")
+      column(9,
+        fluidRow(
+          box(
+           radioGroupButtons("ndoors", label= NULL, choiceNames = c("3 Doors", "10 Doors"),
+                             choiceValues = c(3, 10)),
+           title = "Select number of doors",
+           width = 2, align = "center", height = "100px"
+          ),
+          valueBoxOutput("never_switch", width = 3),
+          valueBoxOutput("always_switch", width = 3),
+          valueBoxOutput("actual_score", width = 3),
+          column(1, align = "left",
+            actionButton("reset_score", "Reset Score", width = "100%"),
+            br(), br(),
+            actionButton("new_game", "New Game", width = "100%"),
+          )
+        ),
+        fluidRow(
+          box(doorUI("door_1"), width = 4, title = "Door 1"),
+          box(doorUI("door_2"), width = 4, title = "Door 2"),
+          box(doorUI("door_3"), width = 4, title = "Door 3")
+        )
+      )
+    )
   )
 )
