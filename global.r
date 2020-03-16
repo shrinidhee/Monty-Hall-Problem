@@ -4,9 +4,9 @@ library(shinyWidgets)
 library(dplyr)
 library(shinyjs)
 
-doorUI <- function(id) {
+doorUI <- function(id, title, width) {
   ns <- NS(id)
-  tagList(
+  box(
     img(src = "door1000.png", height ="100%", width = "100%", id = ns("img_door")),
     hidden(img(src = "donkey1000.png", height = "100%", width = "100%", id = ns("img_donkey"))),
     hidden(img(src = "win1000.png", height = "100%", width ="100%", id = ns("img_prize"))),
@@ -17,7 +17,8 @@ doorUI <- function(id) {
       column(6, align = "left",
         disabled(actionButton(ns("choice_2"), "Choice 2"))
       )
-    )
+    ),
+    title = title, width = width
   )
 }
 

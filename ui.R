@@ -20,9 +20,9 @@ dashboardPage(
           valueBoxOutput("actual_score", width = 3)
         ),
         fluidRow(
-          box(doorUI("door_1"), width = 4, title = "Door 1"),
-          box(doorUI("door_2"), width = 4, title = "Door 2"),
-          box(doorUI("door_3"), width = 4, title = "Door 3")
+          doorUI("door_1", width = 4, title = "Door 1"),
+          doorUI("door_2", width = 4, title = "Door 2"),
+          doorUI("door_3", width = 4, title = "Door 3")
         )
       )
     )
