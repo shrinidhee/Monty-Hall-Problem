@@ -53,21 +53,22 @@ shinyServer(function(input, output, session) {
   })
   
   output$never_switch <- renderValueBox({
-    valueBox("33%", "Expected Win %: Never Switch Strategy", color = "red")
+    valueBox("33.3%", "Expected Win %: Never Switch Strategy", color = "red")
   })
   
   output$always_switch <- renderValueBox({
-    valueBox("67%", "Expected Win %: Always Switch Strategy", color = "green")
+    valueBox("66.7%", "Expected Win %: Always Switch Strategy", color = "green")
   })
   
   output$games_played <- renderValueBox({
-    req((score$won + score$lost) > 0)
+    # req((score$won + score$lost) > 0)
     valueBox(sum(score$won, score$lost), "Games Played", color = "blue")
   })
   
   output$actual_score <- renderValueBox({
-    req((score$won + score$lost) > 0)
-    current_score <- round(score$won * 100 / (score$won + score$lost), 1)
+    # req((score$won + score$lost) > 0)
+    cs <- round(score$won * 100 / (score$won + score$lost), 1)
+    current_score <- ifelse(is.nan(cs), 0, cs)
     valueBox(paste0(current_score, "%"), "Player Win %", color = "blue")
   })
   

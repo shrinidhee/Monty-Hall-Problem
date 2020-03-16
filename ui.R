@@ -8,7 +8,9 @@ dashboardPage(
                                 }"))),
     fluidRow(
       column(3,
-        box("some text", title = "Game Desc")
+        box(includeHTML("www/info.txt"),
+          title = "Game Desc", width = "100%"
+        )
       ),
       column(9,
         fluidRow(

@@ -1,0 +1,13 @@
+<p>Imagine you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat (obviously, host always opens the door with a goat). He then says to you, "Do you want to pick door No. 2?"</p>
+
+Is it to your advantage to switch your choice?
+
+<br><br>
+Most people think that the probability of either remaining door having a prize behind it is 50% i.e. the player had the same probability of winning whether they switched or not. Well, they're all WRONG! With 3 doors, the probability of winning after switching doors is actually 66.67%.
+
+<br><br>
+Check out my <a href="https://www.linkedin.com/pulse/r-simulation-monty-hall-problem-shrinidhee-shevade/">LinkedIn</a> article to see why.
+
+<br><br>
+Gameplay
+
