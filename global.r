@@ -9,7 +9,7 @@ doorUI <- function(id) {
   tagList(
     img(src = "door1000.png", height ="100%", width = "100%", id = ns("img_door")),
     hidden(img(src = "donkey1000.png", height = "100%", width = "100%", id = ns("img_donkey"))),
-    hidden(img(src = "prize1000.png", height = "100%", width ="100%", id = ns("img_prize"))),
+    hidden(img(src = "win1000.png", height = "100%", width ="100%", id = ns("img_prize"))),
     fluidRow(
       column(6, align = "right",
         actionButton(ns("choice_1"), "Choice 1")
@@ -57,7 +57,6 @@ door <- function(input, output, session, choice_number, door_id,
   observeEvent(new_game(), {
     enable("choice_1")
     disable("choice_2")
-    choice_number(0)
     hide("img_donkey")
     hide("img_prize")
     show("img_door")

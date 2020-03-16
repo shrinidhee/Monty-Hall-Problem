@@ -32,6 +32,7 @@ shinyServer(function(input, output, session) {
   })
   
   observeEvent(input$new_game, {
+    choice_number(0)
     door_choice$first <- NULL
     door_choice$second <- NULL
     prize_door(sample(3, 1))
@@ -57,6 +58,11 @@ shinyServer(function(input, output, session) {
   
   output$always_switch <- renderValueBox({
     valueBox("67%", "Expected Win %: Always Switch Strategy", color = "green")
+  })
+  
+  output$games_played <- renderValueBox({
+    req((score$won + score$lost) > 0)
+    valueBox(sum(score$won, score$lost), "Games Played", color = "blue")
   })
   
   output$actual_score <- renderValueBox({
