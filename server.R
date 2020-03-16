@@ -23,10 +23,6 @@ shinyServer(function(input, output, session) {
              door_choice = door_choice, new_game = reactive(input$new_game),
              prize_door = prize_door, open_door = open_door)
   
-  # observeEvent(choice_number(), {
-  #   if(door_choice)
-  # })
-  
   observeEvent(door_choice$second, {
     if(door_choice$second == prize_door()) {
       score$won <- score$won + 1

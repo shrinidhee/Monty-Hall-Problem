@@ -3,6 +3,9 @@ dashboardPage(
   dashboardSidebar(disable = TRUE),
   dashboardBody(
     useShinyjs(),
+    tags$head(tags$style(HTML("div.box-header {
+                                  text-align: center;
+                                }"))),
     fluidRow(
       column(3,
         box("some text", title = "Game Desc")
