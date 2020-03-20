@@ -3,6 +3,7 @@ library(shinydashboard)
 library(shinyWidgets)
 library(dplyr)
 library(shinyjs)
+library(shinyalert)
 
 doorUI <- function(id, title, width) {
   ns <- NS(id)

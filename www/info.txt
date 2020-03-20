@@ -1,3 +1,9 @@
+<style>
+#gameplay {
+  text-align: center;
+}
+</style>
+
 <p>Imagine you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat (obviously, host always opens the door with a goat). He then says to you, "Do you want to pick door No. 2?"</p>
 
 Is it to your advantage to switch your choice?
@@ -8,6 +14,12 @@ Most people think that the probability of either remaining door having a prize b
 <br><br>
 Check out my <a href="https://www.linkedin.com/pulse/r-simulation-monty-hall-problem-shrinidhee-shevade/">LinkedIn</a> article to see why.
 
-<br><br>
-Gameplay
+<h3 id="gameplay"><strong>Gameplay</strong></h3>
 
+<ol type="1">
+  <li>Press Reset/New Game to start a new game. 'Reset' resets the score and 'New Game' starts a new game</li><br>
+  <li>There are two buttons under every door. Make first choice using 'Choice 1' button. Then a random door (except your first choice) will be opened.</li><br>
+  <li>Now make your second choice. You can choose to stay with your original door OR chose the other remaining door.</li><br>
+  <li>All doors will be opened and score will update accoridingly.</li><br>
+  <li>Try different strategies and see if you can beat 66.7% over many games.</li>
+</ol>

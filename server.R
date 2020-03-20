@@ -25,8 +25,10 @@ shinyServer(function(input, output, session) {
   
   observeEvent(door_choice$second, {
     if(door_choice$second == prize_door()) {
+      shinyalert(text = "You Won!", timer = 1000, type = "success", showConfirmButton = F)
       score$won <- score$won + 1
     } else {
+      shinyalert(text = "You Lost!", timer = 1000, type = "error", showConfirmButton = F)
       score$lost <- score$lost + 1
     }
   })

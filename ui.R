@@ -3,13 +3,14 @@ dashboardPage(
   dashboardSidebar(disable = TRUE),
   dashboardBody(
     useShinyjs(),
+    useShinyalert(),
     tags$head(tags$style(HTML("div.box-header {
                                   text-align: center;
                                 }"))),
     fluidRow(
       column(3,
         box(includeHTML("www/info.txt"),
-          title = "Game Desc", width = "100%"
+          title = HTML("<h3><strong>Game Background</strong></h3>"), width = "100%"
         )
       ),
       column(9,
